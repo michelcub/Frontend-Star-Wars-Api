@@ -25,9 +25,6 @@ export const Navbar = ({items, handle}) => {
                     </ul>
                 </nav>
             </div>
-            
-
-
         </header>
     )
 }
