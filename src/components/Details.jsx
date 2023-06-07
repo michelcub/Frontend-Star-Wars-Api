@@ -15,7 +15,7 @@ const Details = ({ children }) => {
           <p>{children}</p>
         </div>
       </div>
-      <div className="row row-cols-2 row-cols-md-3 row-cols-lg-6 my-3 p-3 py-5 border-top border-danger text-danger">
+      <div className="row row-cols-2 row-cols-md-3 row-cols-lg-6 my-3 p-3 py-5 g-2 border-top border-danger text-danger">
         <div className="col">
           <h5>Name</h5>
           <p>Name</p>
