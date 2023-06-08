@@ -4,7 +4,7 @@ import useAppContext from "../context/AppContext";
 export const Card = ({title,children, id}) => {
 
     const [likeStatus, setLikeStatus] = useState(false)
-    const{store, actions} = useAppContext;
+    const{actions} = useAppContext;
 
     const switchStatus = () => {
         likeStatus? actions.handleDeleteFavorites : actions.handleAddFavoritesList; 
