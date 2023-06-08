@@ -19,7 +19,7 @@ export const Navbar = () => {
                     </button>
                     <ul className="dropdown-menu">
                         {store.favoritesList?.map((item) => {
-                            return (<li className="d-flex m-2" key={item.name}><a className="dropdown-item" href="#" key={item.id}>{item.name}</a><button className="btn btn-danger" id={item.id}  key={item.name}><i className="fa-regular fa-trash-can" onClick={actions.handleDeleteFavorites}id={item.id}></i></button></li>)
+                            return (<li className="d-flex m-2" key={item.name}><a className="dropdown-item" href="#" key={item.id}>{item.name}</a><button className="btn btn-danger" id={item.id}  key={item.name} onClick={actions.handleDeleteFavorites}><i className="fa-regular fa-trash-can p-1" onClick={actions.handleDeleteFavorites}id={item.id}></i></button></li>)
                         })}   
                     </ul>
                 </nav>

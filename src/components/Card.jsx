@@ -8,7 +8,7 @@ export const Card = ({title,children, id}) => {
 
     const switchStatus = () => {
         likeStatus? actions.handleDeleteFavorites : actions.handleAddFavoritesList; 
-        setLikeStatus(!likeStatus);
+        setLikeStatus((prev)=>!prev);
     }
 
 
