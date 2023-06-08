@@ -1,0 +1,48 @@
+const DetailsFile = ({ children }) => {
+  return (
+    <div className="container text-center">
+      <div className="row row-cols-1 row-cols-lg-2 p-3">
+        <div className="col my-3">
+          <div className="ratio ratio-4x3">
+            <img
+              src="https://welovecatsandkittens.com/wp-content/uploads/2022/05/Star-wars-cat-names-1.jpg"
+              className="img-fluid object-fit-cover"
+            ></img>
+          </div>
+        </div>
+        <div className="col my-3">
+          <h1>Character name</h1>
+          <p>{children}</p>
+        </div>
+      </div>
+      <div className="row row-cols-2 row-cols-md-3 row-cols-lg-6 my-3 p-3 py-5 g-2 border-top border-danger text-danger">
+        <div className="col">
+          <h5>Name</h5>
+          <p>Name</p>
+        </div>
+        <div className="col">
+          <h5>Birth Year</h5>
+          <p>Birth Year</p>
+        </div>
+        <div className="col">
+          <h5>Gender</h5>
+          <p>Gender</p>
+        </div>
+        <div className="col">
+          <h5>Height</h5>
+          <p>Height</p>
+        </div>
+        <div className="col">
+          <h5>Skin Color</h5>
+          <p>Skin Color</p>
+        </div>
+        <div className="col">
+          <h5>Eye color</h5>
+          <p>Eye color</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DetailsFile;

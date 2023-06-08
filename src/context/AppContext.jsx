@@ -1,34 +1,52 @@
 import { useContext, createContext, useEffect } from "react";
 import { useState } from "react";
+
+import getCharacters from "../services/characters";
+
 const AppContext = createContext();
 
-
 export const AppProvider = ({ children }) => {
-  const listTest = [{id:1,name:'jose'},{id:2,name:'jack'},{id:3,name:'jordan'}, {id:4,name:'michel'}];
   const [favoritesList, setFavoritesList] = useState([]);
-  useEffect(()=> setFavoritesList([...listTest]), [])
+  const [characters, setCharacters] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => setFavoritesList([]), []);
+
   const handleAddFavoritesList = (e) => {
-    const elementId = e.target.id
+    const elementId = e.target.id;
     const newList = [...favoritesList, elementId];
     setFavoritesList(newList);
-  }
+  };
+
+  useEffect(() => {
+    getCharacters(setCharacters);
+    setLoading(false);
+  }, []);
 
   const handleDeleteFavorites = (e) => {
     const elementId = e.target.id;
-    const newList = favoritesList.filter(item => item.id != parseInt(elementId))
+    const newList = favoritesList.filter(
+      (item) => item.id != parseInt(elementId)
+    );
     setFavoritesList([...newList]);
-  }
+  };
 
   const actions = {
     handleDeleteFavorites,
-    handleAddFavoritesList
-  }
+    handleAddFavoritesList,
+  };
 
   const store = {
-    favoritesList
-  }
+    favoritesList,
+    characters,
+    loading,
+  };
 
-  return <AppContext.Provider value={{actions, store}}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={{ actions, store }}>
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 const useAppContext = () => useContext(AppContext);
