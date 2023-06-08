@@ -9,13 +9,13 @@ export const Home = () => {
   if (store.loading) {
     return <h1>Loading...</h1>;
   }
-
+  console.log(store?.characters)
   return (
     <>
       <Title>Characters</Title>
       <CardGroup>
-        {store.characters.map((character) => {
-          <Card title={character}></Card>;
+        {store?.characters.map((character) => {
+         return(<Card title={character.name} key={character.uid}></Card>) ;
         })}
       </CardGroup>
       <Title>Planets</Title>

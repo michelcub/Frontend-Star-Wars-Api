@@ -22,7 +22,7 @@ export const AppProvider = ({ children }) => {
     getCharacters(setCharacters);
     setLoading(false);
   }, []);
-
+  
   const handleDeleteFavorites = (e) => {
     const elementId = e.target.id;
     const newList = favoritesList.filter(
