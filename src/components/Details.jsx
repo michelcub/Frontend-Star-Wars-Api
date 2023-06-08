@@ -1,4 +1,4 @@
-const Details = ({ children }) => {
+const DetailsFile = ({ children }) => {
   return (
     <div className="container text-center">
       <div className="row row-cols-1 row-cols-lg-2 p-3">
@@ -45,4 +45,4 @@ const Details = ({ children }) => {
   );
 };
 
-export default Details;
+export default DetailsFile;

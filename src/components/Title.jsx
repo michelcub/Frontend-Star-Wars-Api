@@ -1,5 +1,5 @@
-const Title = () => {
-  return <h2>Section title</h2>;
+const Title = ({ children }) => {
+  return <h2 className="m-3">{children}</h2>;
 };
 
 export default Title;

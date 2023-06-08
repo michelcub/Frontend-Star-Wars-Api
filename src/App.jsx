@@ -4,6 +4,7 @@ import { Navbar } from "./components/Navbar";
 
 import { Home } from "./views/Home";
 import { Details } from "./views/Details";
+
 function App() {
   return (
     <BrowserRouter basename="/">
