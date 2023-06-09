@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Title from "../components/Title";
 import CardGroup from "../components/CardGroup";
 import { Card } from "../components/Card";
@@ -9,34 +11,34 @@ export const Home = () => {
   if (store.loading) {
     return <h1>Loading...</h1>;
   }
-  console.log(store?.characters)
+
+  console.log(store.characters);
+  console.log(store.charactersDetails);
+
   return (
     <>
       <Title>Characters</Title>
       <CardGroup>
-        {store?.characters.map((character) => {
-         return(<Card title={character.name} key={character.uid}></Card>) ;
+        {store?.characters.map((character, index) => {
+          return (
+            <Card title={character.name} key={character.uid}>
+              <p>{`Gender: ${store?.charactersDetails[index].gender}`}</p>
+              <p>{`Hair Color: ${store?.charactersDetails[index].hair_color}`}</p>
+              <p>{`Eye Color: ${store?.charactersDetails[index].eye_color}`}</p>
+            </Card>
+          );
         })}
       </CardGroup>
       <Title>Planets</Title>
       <CardGroup>
-        <CardGroup>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-        </CardGroup>
+        {store?.planets.map((planet, index) => {
+          return (
+            <Card title={planet.name} key={planet.uid}>
+              <p>{`Population: ${store?.planetsDetails[index].population}`}</p>
+              <p>{`Terrain: ${store?.planetsDetails[index].terrain}`}</p>
+            </Card>
+          );
+        })}
       </CardGroup>
     </>
   );
