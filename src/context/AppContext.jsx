@@ -9,6 +9,7 @@ import getPlanetsDetails from "../services/planetsDetails";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+  const [allData, setAllData] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
   const [characters, setCharacters] = useState([]);
   const [charactersDetails, setCharactersDetails] = useState([]);
@@ -19,9 +20,21 @@ export const AppProvider = ({ children }) => {
   useEffect(() => setFavoritesList([]), []);
 
   const handleAddFavoritesList = (e) => {
-    const elementId = e.target.id;
-    const newList = [...favoritesList, elementId];
-    setFavoritesList(newList);
+    const element = e.target;
+    
+    allData.forEach((item)=>{
+      element.id === item.name? setFavoritesList((prev) =>{
+        console.log(prev)
+        const include = prev.forEach(itemList=> {
+          if(itemList.name === element.id){
+            console.log(true) ;
+          }
+        })
+        console.log(include)
+        return [...favoritesList,item]
+      }):null; 
+    })
+  
   };
 
   useEffect(() => {
@@ -39,6 +52,8 @@ export const AppProvider = ({ children }) => {
       orderedDetails.sort((a, b) => a.uid - b.uid);
       setCharactersDetails(orderedDetails);
     };
+
+    
 
     getAllCharDetails();
   }, [characters]);
@@ -77,9 +92,10 @@ export const AppProvider = ({ children }) => {
   const handleDeleteFavorites = (e) => {
     const elementId = e.target.id;
     const newList = favoritesList.filter(
-      (item) => item.id != parseInt(elementId)
+       (item) => item.name !== elementId
     );
-    setFavoritesList([...newList]);
+     setFavoritesList([...newList]);
+    console.log(e.target.id)
   };
 
   const actions = {
@@ -94,7 +110,11 @@ export const AppProvider = ({ children }) => {
     planets,
     planetsDetails,
     loading,
+    allData
   };
+
+  useEffect(()=>setAllData(()=> [...planets,...characters]),[planetsDetails,charactersDetails])
+  console.log(allData)
 
   return (
     <AppContext.Provider value={{ actions, store }}>

@@ -4,7 +4,6 @@ import useAppContext from "../context/AppContext";
 
 export const Navbar = () => {
   const { store, actions } = useAppContext();
-
   return (
     <header className="container-fluid bg-body-secondary">
       <div className="row-12 d-flex justify-content-between p-3 align-items-center">
@@ -32,14 +31,14 @@ export const Navbar = () => {
                   </a>
                   <button
                     className="btn btn-danger"
-                    id={item.id}
-                    key={item.name}
+                    id={item.name}
+                    key={item.id}
                     onClick={actions.handleDeleteFavorites}
                   >
                     <i
                       className="fa-regular fa-trash-can p-1"
                       onClick={actions.handleDeleteFavorites}
-                      id={item.id}
+                      id={item.name}
                     ></i>
                   </button>
                 </li>
