@@ -30,12 +30,16 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const getAllCharDetails = async () => {
-      await Promise.all(
+      const orderedDetails = await Promise.all(
         characters.map(async (character) => {
-          await getCharactersDetails(character.uid, setCharactersDetails);
+          return await getCharactersDetails(character.uid);
         })
       );
+
+      orderedDetails.sort((a, b) => a.uid - b.uid);
+      setCharactersDetails(orderedDetails);
     };
+
     getAllCharDetails();
   }, [characters]);
 
@@ -45,12 +49,16 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const getAllPlanetsDetails = async () => {
-      await Promise.all(
+      const planetsDetails = await Promise.all(
         planets.map(async (planet) => {
-          await getPlanetsDetails(planet.uid, setPlanetsDetails);
+          return await getPlanetsDetails(planet.uid);
         })
       );
+
+      const orderedDetails = planetsDetails.sort((a, b) => a.uid - b.uid);
+      setPlanetsDetails(orderedDetails);
     };
+
     getAllPlanetsDetails();
   }, [planets]);
 
