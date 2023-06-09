@@ -5,10 +5,16 @@ import DetailsFile from "../components/Details";
 
 export const Details = () => {
   const params = useParams();
-  const { store, actions } = useAppContext;
-
+  console.log(params.id)
+  const { actions, store} = useAppContext();
+  const data = store.allDetailData
+  let details = null;
+  data?.forEach(item => {
+    item.name === params.id? details = item:null
+  })
+  console.log(details)
   return (
-    <DetailsFile>
+    <DetailsFile details = {details}>
       <p>Prueba</p>
     </DetailsFile>
   );

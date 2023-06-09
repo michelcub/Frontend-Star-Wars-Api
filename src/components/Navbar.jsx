@@ -1,7 +1,7 @@
 import "./Navbar.css";
 import logo from "../../public/Star-Wars-Logo.png";
 import useAppContext from "../context/AppContext";
-
+import { Link } from "react-router-dom";
 export const Navbar = () => {
   const { store, actions } = useAppContext();
   return (
@@ -26,9 +26,9 @@ export const Navbar = () => {
             {store.favoritesList?.map((item) => {
               return (
                 <li className="d-flex m-2" key={item.name}>
-                  <a className="dropdown-item" href="#" key={item.id}>
+                  <Link to={`/details/${item.name}`} className="dropdown-item" href="#" key={item.id}>
                     {item.name}
-                  </a>
+                  </Link>
                   <button
                     className="btn btn-danger"
                     id={item.name}

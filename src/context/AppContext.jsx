@@ -10,6 +10,7 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [allData, setAllData] = useState([]);
+  const [allDetailData, setAllDetailData] = useState([]);
   const [favoritesList, setFavoritesList] = useState([]);
   const [characters, setCharacters] = useState([]);
   const [charactersDetails, setCharactersDetails] = useState([]);
@@ -110,11 +111,13 @@ export const AppProvider = ({ children }) => {
     planets,
     planetsDetails,
     loading,
-    allData
+    allData,
+    allDetailData
   };
 
   useEffect(()=>setAllData(()=> [...planets,...characters]),[planetsDetails,charactersDetails])
-  console.log(allData)
+  useEffect(()=>setAllDetailData(()=> [...planetsDetails,...charactersDetails]),[planetsDetails,charactersDetails])
+  console.log(allDetailData)
 
   return (
     <AppContext.Provider value={{ actions, store }}>

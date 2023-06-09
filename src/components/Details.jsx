@@ -1,4 +1,6 @@
-const DetailsFile = ({ children }) => {
+const DetailsFile = ({ details,children }) => {
+
+
   return (
     <div className="container text-center">
       <div className="row row-cols-1 row-cols-lg-2 p-3">
@@ -11,34 +13,34 @@ const DetailsFile = ({ children }) => {
           </div>
         </div>
         <div className="col my-3">
-          <h1>Character name</h1>
+          <h1>{details.name}</h1>
           <p>{children}</p>
         </div>
       </div>
       <div className="row row-cols-2 row-cols-md-3 row-cols-lg-6 my-3 p-3 py-5 g-2 border-top border-danger text-danger">
         <div className="col">
           <h5>Name</h5>
-          <p>Name</p>
+          <p>{details.name}</p>
         </div>
         <div className="col">
           <h5>Birth Year</h5>
-          <p>Birth Year</p>
+          <p>{details.birth_year}</p>
         </div>
         <div className="col">
           <h5>Gender</h5>
-          <p>Gender</p>
+          <p>{details.gender}</p>
         </div>
         <div className="col">
           <h5>Height</h5>
-          <p>Height</p>
+          <p>{details.height}</p>
         </div>
         <div className="col">
           <h5>Skin Color</h5>
-          <p>Skin Color</p>
+          <p>{details.skin_color}</p>
         </div>
         <div className="col">
           <h5>Eye color</h5>
-          <p>Eye color</p>
+          <p>{details.eye_color}</p>
         </div>
       </div>
     </div>
