@@ -12,7 +12,7 @@ export const Card = ({ title, children, id }) => {
   };
 
   return (
-    <div className="card col-10 col-md-6 col-xs-2">
+    <div className="card col-10 col-md-6 col-lg-2 mx-3 p-0">
       <img
         src="https://welovecatsandkittens.com/wp-content/uploads/2022/05/Star-wars-cat-names-1.jpg"
         alt="img-default"
