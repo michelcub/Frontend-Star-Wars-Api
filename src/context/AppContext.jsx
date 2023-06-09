@@ -30,9 +30,9 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const getAllCharDetails = async () => {
-      Promise.all(
+      await Promise.all(
         characters.map(async (character) => {
-          getCharactersDetails(character.uid, setCharactersDetails);
+          await getCharactersDetails(character.uid, setCharactersDetails);
         })
       );
     };
@@ -45,9 +45,9 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     const getAllPlanetsDetails = async () => {
-      Promise.all(
+      await Promise.all(
         planets.map(async (planet) => {
-          getPlanetsDetails(planet.uid, setPlanetsDetails);
+          await getPlanetsDetails(planet.uid, setPlanetsDetails);
         })
       );
     };
