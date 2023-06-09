@@ -2,12 +2,14 @@ import { useContext, createContext, useEffect } from "react";
 import { useState } from "react";
 
 import getCharacters from "../services/characters";
+import getCharactersDetails from "../services/charactersDetails";
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [favoritesList, setFavoritesList] = useState([]);
   const [characters, setCharacters] = useState([]);
+  const [charactersDetails, setCharactersDetails] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => setFavoritesList([]), []);
@@ -20,9 +22,29 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     getCharacters(setCharacters);
-    setLoading(false);
   }, []);
-  
+
+  useEffect(() => {
+    const getAllCharDetails = async () => {
+      Promise.all(
+        characters.map(async (character) => {
+          getCharactersDetails(character.uid, setCharactersDetails);
+        })
+      );
+    };
+    getAllCharDetails();
+  }, [characters]);
+
+  //USE EFFECT PARA CONTROLAR LOADING
+  useEffect(() => {
+    if (
+      charactersDetails.length > 0 &&
+      characters.length === charactersDetails.length
+    ) {
+      setLoading(false);
+    }
+  }, [characters, charactersDetails]);
+
   const handleDeleteFavorites = (e) => {
     const elementId = e.target.id;
     const newList = favoritesList.filter(
@@ -39,6 +61,7 @@ export const AppProvider = ({ children }) => {
   const store = {
     favoritesList,
     characters,
+    charactersDetails,
     loading,
   };
 

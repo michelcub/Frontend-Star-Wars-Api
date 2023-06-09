@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import useAppContext from "../context/AppContext";
+
 export const Card = ({ title, children, id }) => {
   const [likeStatus, setLikeStatus] = useState(false);
   const { actions } = useAppContext;

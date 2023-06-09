@@ -9,13 +9,20 @@ export const Home = () => {
   if (store.loading) {
     return <h1>Loading...</h1>;
   }
-  console.log(store?.characters)
+
   return (
     <>
       <Title>Characters</Title>
       <CardGroup>
-        {store?.characters.map((character) => {
-         return(<Card title={character.name} key={character.uid}></Card>) ;
+        {store?.characters.map((character, index) => {
+          const characterDetail = store?.charactersDetails[index];
+          return (
+            <Card title={character.name} key={character.uid}>
+              <p>{`Gender: ${characterDetail.gender}`}</p>
+              <p>{`Hair Color: ${characterDetail.hair_color}`}</p>
+              <p>{`Eye Color: ${characterDetail.eye_color}`}</p>
+            </Card>
+          );
         })}
       </CardGroup>
       <Title>Planets</Title>
