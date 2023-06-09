@@ -27,23 +27,15 @@ export const Home = () => {
       </CardGroup>
       <Title>Planets</Title>
       <CardGroup>
-        <CardGroup>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-          <Card title={"Hola"} id={1}>
-            <p>Probando</p>
-          </Card>
-        </CardGroup>
+        {store?.planets.map((planet, index) => {
+          const planetDetail = store?.planetsDetails[index];
+          return (
+            <Card title={planet.name} key={planet.uid}>
+              <p>{`Population: ${planetDetail.population}`}</p>
+              <p>{`Terrain: ${planetDetail.terrain}`}</p>
+            </Card>
+          );
+        })}
       </CardGroup>
     </>
   );
