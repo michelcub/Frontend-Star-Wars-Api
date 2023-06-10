@@ -21,7 +21,12 @@ export const Home = () => {
       <CardGroup>
         {store?.characters.map((character, index) => {
           return (
-            <Card title={character.name} key={character.uid} id={character.name}>
+            <Card
+              title={character.name}
+              key={character.uid}
+              url={`/characters/${character.uid}`}
+              id={character.uid}
+            >
               <p>{`Gender: ${store?.charactersDetails[index].gender}`}</p>
               <p>{`Hair Color: ${store?.charactersDetails[index].hair_color}`}</p>
               <p>{`Eye Color: ${store?.charactersDetails[index].eye_color}`}</p>
@@ -33,7 +38,12 @@ export const Home = () => {
       <CardGroup>
         {store?.planets.map((planet, index) => {
           return (
-            <Card title={planet.name} key={planet.uid} id={planet.name}>
+            <Card
+              title={planet.name}
+              key={planet.uid}
+              url={`/planets/${planet.uid}`}
+              id={planet.uid}
+            >
               <p>{`Population: ${store?.planetsDetails[index].population}`}</p>
               <p>{`Terrain: ${store?.planetsDetails[index].terrain}`}</p>
             </Card>

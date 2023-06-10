@@ -1,4 +1,4 @@
-const Details = ({ details, children }) => {
+const Planets = ({ details, children }) => {
   return (
     <div className="container text-center">
       <div className="row row-cols-1 row-cols-lg-2 p-3">
@@ -21,28 +21,28 @@ const Details = ({ details, children }) => {
           <p>{details.name}</p>
         </div>
         <div className="col">
-          <h5>Birth Year</h5>
-          <p>{details.birth_year}</p>
+          <h5>Climate</h5>
+          <p>{details.climate}</p>
         </div>
         <div className="col">
-          <h5>Gender</h5>
-          <p>{details.gender}</p>
+          <h5>Diameter</h5>
+          <p>{details.diameter}</p>
         </div>
         <div className="col">
-          <h5>Height</h5>
-          <p>{details.height}</p>
+          <h5>Gravity</h5>
+          <p>{details.gravity}</p>
         </div>
         <div className="col">
-          <h5>Skin Color</h5>
-          <p>{details.skin_color}</p>
+          <h5>Population</h5>
+          <p>{details.population}</p>
         </div>
         <div className="col">
           <h5>Eye color</h5>
-          <p>{details.eye_color}</p>
+          <p>{details.terrain}</p>
         </div>
       </div>
     </div>
   );
 };
 
-export default Details;
+export default Planets;

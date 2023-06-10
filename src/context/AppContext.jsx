@@ -20,24 +20,21 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => setFavoritesList([]), []);
 
-    
   const handleAddFavoritesList = (e) => {
     const element = e.target;
-    
-    allData.forEach((item)=>{
-     
-      element.id === item.name? setFavoritesList((prev) =>{
-        if(!prev.includes(item.name)){
-          return [...prev,item.name]
-        }else{
-          const newList = prev.filter(element => element!== item.name)
-          return [...newList]
-        }
-        // console.log(prev)
-        // return [...prev,item.name]
-      }):null; 
-    })
-  
+
+    allData.forEach((item) => {
+      element.id === item.name
+        ? setFavoritesList((prev) => {
+            if (!prev.includes(item.name)) {
+              return [...prev, item.name];
+            } else {
+              const newList = prev.filter((element) => element !== item.name);
+              return [...newList];
+            }
+          })
+        : null;
+    });
   };
 
   useEffect(() => {
@@ -55,8 +52,6 @@ export const AppProvider = ({ children }) => {
       orderedDetails.sort((a, b) => a.uid - b.uid);
       setCharactersDetails(orderedDetails);
     };
-
-    
 
     getAllCharDetails();
   }, [characters]);
@@ -94,11 +89,8 @@ export const AppProvider = ({ children }) => {
 
   const handleDeleteFavorites = (e) => {
     const elementId = e.target.id;
-    const newList = favoritesList.filter(
-       (item) => item !== elementId
-    );
-     setFavoritesList([...newList]);
-    console.log(e.target.id)
+    const newList = favoritesList.filter((item) => item !== elementId);
+    setFavoritesList([...newList]);
   };
 
   const actions = {
@@ -114,12 +106,17 @@ export const AppProvider = ({ children }) => {
     planetsDetails,
     loading,
     allData,
-    allDetailData
+    allDetailData,
   };
 
-  useEffect(()=>setAllData(()=> [...planets,...characters]),[planetsDetails,charactersDetails])
-  useEffect(()=>setAllDetailData(()=> [...planetsDetails,...charactersDetails]),[planetsDetails,charactersDetails])
-  console.log(allDetailData)
+  useEffect(
+    () => setAllData(() => [...planets, ...characters]),
+    [planetsDetails, charactersDetails]
+  );
+  useEffect(
+    () => setAllDetailData(() => [...planetsDetails, ...charactersDetails]),
+    [planetsDetails, charactersDetails]
+  );
 
   return (
     <AppContext.Provider value={{ actions, store }}>

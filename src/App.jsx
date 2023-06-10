@@ -3,7 +3,8 @@ import "./App.css";
 import { Navbar } from "./components/Navbar";
 
 import { Home } from "./views/Home";
-import { Details } from "./views/Details";
+import { DetailsView } from "./views/DetailsView";
+import { PlanetsView } from "./views/PlanetsVIew";
 import { NotFound } from "./views/NotFound";
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/details/:id" element={<Details />} />
-        <Route path="*" element={<NotFound/>} />
+        <Route path="/characters/:id" element={<DetailsView />} />
+        <Route path="/planets/:id" element={<PlanetsView />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
