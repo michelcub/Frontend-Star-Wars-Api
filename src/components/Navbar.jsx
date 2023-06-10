@@ -26,8 +26,8 @@ export const Navbar = () => {
             {store.favoritesList?.map((item) => {
               return (
                 <li className="d-flex m-2" key={item.name}>
-                  <Link to={`/details/${item.name}`} className="dropdown-item" href="#" key={item.id}>
-                    {item.name}
+                  <Link to={`/details/${item}`} className="dropdown-item" href="#" key={item.id}>
+                    {item}
                   </Link>
                   <button
                     className="btn btn-danger"

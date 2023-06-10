@@ -20,19 +20,21 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => setFavoritesList([]), []);
 
+    
   const handleAddFavoritesList = (e) => {
     const element = e.target;
     
     allData.forEach((item)=>{
+     
       element.id === item.name? setFavoritesList((prev) =>{
-        console.log(prev)
-        const include = prev.forEach(itemList=> {
-          if(itemList.name === element.id){
-            console.log(true) ;
-          }
-        })
-        console.log(include)
-        return [...favoritesList,item]
+        if(!prev.includes(item.name)){
+          return [...prev,item.name]
+        }else{
+          const newList = prev.filter(element => element!== item.name)
+          return [...newList]
+        }
+        // console.log(prev)
+        // return [...prev,item.name]
       }):null; 
     })
   

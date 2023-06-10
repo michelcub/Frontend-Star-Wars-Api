@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import useAppContext from "../context/AppContext";
 import { Link } from "react-router-dom";
 export const Card = ({ title, children, id }) => {
@@ -12,6 +12,10 @@ export const Card = ({ title, children, id }) => {
     });
     return actions.handleAddFavoritesList(e);
   };
+
+  const color = useMemo(()=>{
+    return likeStatus? 'text-danger' : 'text-warning'
+  }, [likeStatus])
 
   return (
     <div className="card col-10 col-md-6 col-lg-2 mx-3 p-0">
@@ -28,12 +32,11 @@ export const Card = ({ title, children, id }) => {
         <button
         
           id={id}
-          className="btn btn-outline-warning"
-          onClick={switchStatus}
+          className={`btn btn-outline-warning ${color} p-0`}
         >
           <i
             id={id}
-            className={` fa-regular fa-heart ${likeStatus && "text-warning"}`}
+            className={` fa-solid fa-heart ${color} px-2 py-2`}
             onClick={switchStatus}
           ></i>
         </button>
