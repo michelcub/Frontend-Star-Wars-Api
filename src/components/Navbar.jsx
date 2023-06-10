@@ -31,14 +31,14 @@ export const Navbar = () => {
                   </Link>
                   <button
                     className="btn btn-danger"
-                    id={item.name}
+                    id={item}
                     key={item.id}
                     onClick={actions.handleDeleteFavorites}
                   >
                     <i
                       className="fa-regular fa-trash-can p-1"
                       onClick={actions.handleDeleteFavorites}
-                      id={item.name}
+                      id={item}
                     ></i>
                   </button>
                 </li>

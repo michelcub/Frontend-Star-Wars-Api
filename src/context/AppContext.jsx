@@ -95,7 +95,7 @@ export const AppProvider = ({ children }) => {
   const handleDeleteFavorites = (e) => {
     const elementId = e.target.id;
     const newList = favoritesList.filter(
-       (item) => item.name !== elementId
+       (item) => item !== elementId
     );
      setFavoritesList([...newList]);
     console.log(e.target.id)
