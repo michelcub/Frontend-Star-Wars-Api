@@ -7,9 +7,9 @@ export const Navbar = () => {
   return (
     <header className="container-fluid bg-body-secondary">
       <div className="row-12 d-flex justify-content-between p-3 align-items-center">
-        <span className="col-auto">
+        <Link to='/' className="col-auto">
           <img className="logo" src={logo} alt="logo_star_wars" />
-        </span>
+        </Link>
         <nav className="dropdown col-auto">
           <button
             className="btn btn-primary dropdown-toggle"
