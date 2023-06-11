@@ -24,9 +24,11 @@ export const Navbar = () => {
           </button>
           <ul className="dropdown-menu">
             {store.favoritesList?.map((item) => {
+              const itemList = store.allData.find((itemList)=> itemList.name === item);
+              const switchUrl = store.characters.includes(itemList)?'characters':'planets';
               return (
                 <li className="d-flex m-2" key={item.name}>
-                  <Link to={`/details/${item}`} className="dropdown-item" href="#" key={item.id}>
+                  <Link to={`/${switchUrl}/${itemList.uid}`} className="dropdown-item" href="#" key={item.id}>
                     {item}
                   </Link>
                   <button

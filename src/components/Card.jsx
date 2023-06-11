@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, useMemo } from "react";
 import useAppContext from "../context/AppContext";
 import { Link } from "react-router-dom";
@@ -12,6 +12,8 @@ export const Card = ({ title, children, id, url, src }) => {
     });
     return actions.handleAddFavoritesList(e);
   };
+
+  
 
   const color = useMemo(() => {
     return likeStatus ? "text-danger" : "text-warning";
