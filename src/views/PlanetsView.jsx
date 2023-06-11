@@ -2,23 +2,23 @@ import { useParams } from "react-router";
 import useAppContext from "../context/AppContext";
 
 import Planets from "../components/Planets";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export const PlanetsView = () => {
   const params = useParams();
   const { actions, store } = useAppContext();
 
-  let details = store.planetsDetails;
-  console.log(details);
-  // data?.forEach((item) => {
-  //   item.name === params.id ? (details = item) : null;
-  // });
-  // console.log(details);
+  const planet = store.planets.find((planet) => planet.uid === params.id);
+  const details = store.planetsDetails.find(
+    (detail) => detail.name === planet.name
+  );
+
   if (store.loading) {
-    return <h1>Loading...</h1>;
+    return <LoadingSpinner />;
   }
 
   return (
-    <Planets details={{ details }}>
+    <Planets details={details}>
       <p>
         Voluptate laborum laborum adipisicing occaecat cupidatat aliqua Lorem
         tempor do nulla. Magna pariatur minim aliqua esse pariatur Lorem

@@ -4,16 +4,14 @@ import Title from "../components/Title";
 import CardGroup from "../components/CardGroup";
 import { Card } from "../components/Card";
 import useAppContext from "../context/AppContext";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export const Home = () => {
   const { store, actions } = useAppContext();
 
   if (store.loading) {
-    return <h1>Loading...</h1>;
+    return <LoadingSpinner />;
   }
-
-  console.log(store.characters);
-  console.log(store.charactersDetails);
 
   return (
     <>

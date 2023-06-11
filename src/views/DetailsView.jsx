@@ -2,19 +2,22 @@ import { useParams } from "react-router";
 import useAppContext from "../context/AppContext";
 
 import Details from "../components/Details";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export const DetailsView = () => {
   const params = useParams();
-  console.log(params.id);
   const { actions, store } = useAppContext();
 
-  const data = store.allDetailData;
-  let details = null;
-  data?.forEach((item) => {
-    item.name === params.id ? (details = item) : null;
-  });
-  console.log(details);
+  const character = store.characters.find(
+    (character) => character.uid === params.id
+  );
+  const details = store.charactersDetails.find(
+    (detail) => detail.name === character.name
+  );
 
+  if (store.loading) {
+    return <LoadingSpinner />;
+  }
   return (
     <Details details={details}>
       <p>
