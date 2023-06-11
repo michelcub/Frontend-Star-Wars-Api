@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useMemo } from "react";
 import useAppContext from "../context/AppContext";
 import { Link } from "react-router-dom";
-export const Card = ({ title, children, id, url }) => {
+export const Card = ({ title, children, id, url, src }) => {
   const [likeStatus, setLikeStatus] = useState(false);
   const { actions } = useAppContext();
 
@@ -19,10 +19,8 @@ export const Card = ({ title, children, id, url }) => {
 
   return (
     <div className="card col-10 col-md-6 col-lg-2 mx-3 p-0">
-      <img
-        src="https://welovecatsandkittens.com/wp-content/uploads/2022/05/Star-wars-cat-names-1.jpg"
-        alt="img-default"
-      />
+      <img className="object-fit-contain" src={src} alt="img-default" />
+
       <div className="card-body">
         <h2 className="card-title">{title}</h2>
         {children}

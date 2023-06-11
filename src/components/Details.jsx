@@ -1,13 +1,10 @@
-const Details = ({ details, children }) => {
+const Details = ({ details, children, src }) => {
   return (
     <div className="container text-center">
       <div className="row row-cols-1 row-cols-lg-2 p-3">
         <div className="col my-3">
-          <div className="ratio ratio-4x3">
-            <img
-              src="https://welovecatsandkittens.com/wp-content/uploads/2022/05/Star-wars-cat-names-1.jpg"
-              className="img-fluid object-fit-cover"
-            ></img>
+          <div className="ratio ratio-1x1">
+            <img src={src} className="img-fluid object-fit-cover"></img>
           </div>
         </div>
         <div className="col my-3">

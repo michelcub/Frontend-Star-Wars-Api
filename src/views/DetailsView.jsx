@@ -19,7 +19,10 @@ export const DetailsView = () => {
     return <LoadingSpinner />;
   }
   return (
-    <Details details={details}>
+    <Details
+      details={details}
+      src={`https://starwars-visualguide.com/assets/img/characters/${character.uid}.jpg`}
+    >
       <p>
         Voluptate laborum laborum adipisicing occaecat cupidatat aliqua Lorem
         tempor do nulla. Magna pariatur minim aliqua esse pariatur Lorem

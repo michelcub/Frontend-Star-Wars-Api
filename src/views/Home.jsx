@@ -24,6 +24,7 @@ export const Home = () => {
               key={character.uid}
               url={`/characters/${character.uid}`}
               id={character.uid}
+              src={`https://starwars-visualguide.com/assets/img/characters/${character.uid}.jpg`}
             >
               <p>{`Gender: ${store?.charactersDetails[index].gender}`}</p>
               <p>{`Hair Color: ${store?.charactersDetails[index].hair_color}`}</p>
@@ -41,6 +42,7 @@ export const Home = () => {
               key={planet.uid}
               url={`/planets/${planet.uid}`}
               id={planet.uid}
+              src={`https://starwars-visualguide.com/assets/img/planets/${planet.uid}.jpg`}
             >
               <p>{`Population: ${store?.planetsDetails[index].population}`}</p>
               <p>{`Terrain: ${store?.planetsDetails[index].terrain}`}</p>

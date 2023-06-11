@@ -18,7 +18,10 @@ export const PlanetsView = () => {
   }
 
   return (
-    <Planets details={details}>
+    <Planets
+      details={details}
+      src={`https://starwars-visualguide.com/assets/img/planets/${planet.uid}.jpg`}
+    >
       <p>
         Voluptate laborum laborum adipisicing occaecat cupidatat aliqua Lorem
         tempor do nulla. Magna pariatur minim aliqua esse pariatur Lorem
