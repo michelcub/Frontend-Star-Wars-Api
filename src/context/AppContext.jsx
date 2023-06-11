@@ -22,9 +22,9 @@ export const AppProvider = ({ children }) => {
 
   const handleAddFavoritesList = (e) => {
     const element = e.target;
-
+    console.log(element.className);
     allData.forEach((item) => {
-      element.id === item.name
+      element.id === item.uid&&element.className.includes(item.name)
         ? setFavoritesList((prev) => {
             if (!prev.includes(item.name)) {
               return [...prev, item.name];

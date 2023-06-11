@@ -32,7 +32,7 @@ export const Card = ({ title, children, id, url, src }) => {
         <button id={id} className={`btn btn-outline-warning ${color} p-0`}>
           <i
             id={id}
-            className={` fa-solid fa-heart ${color} px-2 py-2`}
+            className={` fa-solid fa-heart ${color} px-2 py-2 ${title}`}
             onClick={switchStatus}
           ></i>
         </button>
