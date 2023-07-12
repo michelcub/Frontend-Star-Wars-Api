@@ -5,6 +5,8 @@ import getCharacters from "../services/characters";
 import getCharactersDetails from "../services/charactersDetails";
 import getPlanets from "../services/planets";
 import getPlanetsDetails from "../services/planetsDetails";
+import login from "../services/login";
+import register from "../services/register";
 
 const AppContext = createContext();
 
@@ -17,14 +19,37 @@ export const AppProvider = ({ children }) => {
   const [planets, setPlanets] = useState([]);
   const [planetsDetails, setPlanetsDetails] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
+  const [userInput, setUserInput] = useState({});
+  const [token, setToken] = useState("");
+
+  const handleUserInput = (e) => {
+    setUserInput({ ...userInput, [e.target.name]: e.target.value });
+  };
+  const handleOnSubmitLogin = (e) => {
+    e.preventDefault();
+    login();
+  };
+  const handleOnSubmitRegister = (e) => {
+    e.preventDefault();
+    register();
+  };
+
+  useEffect(() => {
+    if (isLogin) {
+      localStorage.setItem("token", token);
+    } else {
+      localStorage.removeItem("token");
+    }
+  }, [token, isLogin]);
 
   useEffect(() => setFavoritesList([]), []);
 
   const handleAddFavoritesList = (e) => {
     const element = e.target;
-    
+
     allData.forEach((item) => {
-      element.id === item.uid&&element.className.includes(item.name)
+      element.id === item.uid && element.className.includes(item.name)
         ? setFavoritesList((prev) => {
             if (!prev.includes(item.name)) {
               return [...prev, item.name];
@@ -96,6 +121,9 @@ export const AppProvider = ({ children }) => {
   const actions = {
     handleDeleteFavorites,
     handleAddFavoritesList,
+    handleUserInput,
+    handleOnSubmitLogin,
+    handleOnSubmitRegister,
   };
 
   const store = {
@@ -107,6 +135,8 @@ export const AppProvider = ({ children }) => {
     loading,
     allData,
     allDetailData,
+    isLogin,
+    userInput,
   };
 
   useEffect(
